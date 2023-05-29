@@ -9,8 +9,8 @@ const props = defineProps({
 
 const classes = computed(() => {
     return props.active
-        ? 'block border-l border-cyan-500 pl-4 -ml-px hover:border-l-2 text-slate-100 hover:text-white transition duration-150 ease-in-out'
-        : 'block border-l border-slate-700 pl-4 -ml-px hover:border-l-2 hover:border-cyan-600 text-slate-400 hover:text-slate-100 transition duration-150 ease-in-out';
+        ? 'block border-l pl-4 -ml-px border-cyan-500 hover:border-slate-400 hover:border-slate-500 text-slate-200 hover:text-white'
+        : 'block border-l pl-4 -ml-px border-slate-700 hover:border-slate-400 hover:border-slate-500 text-slate-400 hover:text-slate-300';
 });
 </script>
 

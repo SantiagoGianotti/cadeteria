@@ -17,7 +17,7 @@ const props = defineProps({
 
     <!-- Menu items -->
     <ul class="space-y-6 lg:space-y-2 border-l border-slate-700 dark:border-slate-700" v-for="item in props.items">
-        <SideNavLink :href="item.href" :active="item.active_state">
+        <SideNavLink :href="item.href" :active="$page[item.active_state.compare] == item.active_state.with">
             {{item.title}}
         </SideNavLink>
     </ul>
