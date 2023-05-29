@@ -8,6 +8,7 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import SideNavBar from '../Components/SideNavBar/SideNavBar.vue';
 import ResponsiveNavBar from '../Components/ResponsiveNavBar/ResponsiveNavBar.vue';
+import {getRoutes} from '../Assets/Routes.js';
 
 defineProps({
     title: String,
@@ -27,180 +28,6 @@ const logout = () => {
     router.post(route('logout'));
 };
 
-const menuRoutes = ref([
-    {
-        type: 'menu',
-        title: 'Dashboard',
-        items: [
-            {
-                title: 'Pedidos',
-                href: 'dashboard',
-                active_state: {
-                    compare: "url",
-                    with: "/dashboard"
-                }
-            },
-            {
-                title: 'Estadisticas',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "/dashboard"
-                }
-            },
-        ]
-    },
-    {
-        type: 'menu',
-        title: 'Configuración',
-        items: [
-            {
-                title: 'Cadetes',
-                href: 'cadetes',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-            {
-                title: 'Motos',
-                href: 'motos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-            {
-                title: 'Permisos',
-                href: 'permisos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            }
-        ],
-    },
-    {
-        type: 'menu',
-        title: 'Pedidos',
-        items: [
-            {
-                title: 'Pendientes',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-            {
-                title: 'Terminados',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-            {
-                title: 'Cancelados',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-        ]
-    },
-    {
-        type: 'menu',
-        title: 'Pedidos',
-        items: [
-            {
-                title: 'Pendientes',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-            {
-                title: 'Terminados',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-            {
-                title: 'Cancelados',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-        ]
-    },
-    {
-        type: 'menu',
-        title: 'Pedidos',
-        items: [
-            {
-                title: 'Pendientes',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-            {
-                title: 'Terminados',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-            {
-                title: 'Cancelados',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-        ]
-    },
-    {
-        type: 'menu',
-        title: 'Pedidos',
-        items: [
-            {
-                title: 'Pendientes',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-            {
-                title: 'Terminados',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-            {
-                title: 'Cancelados',
-                href: 'pedidos',
-                active_state: {
-                    compare: "url",
-                    with: "dashboard"
-                }
-            },
-        ]
-    },
-])
 </script>
 
 
@@ -232,65 +59,6 @@ const menuRoutes = ref([
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
-                            <div class="ml-3 relative">
-                                <!-- Teams Dropdown -->
-                                <Dropdown v-if="$page.props.jetstream.hasTeamFeatures" align="right" width="60">
-                                    <template #trigger>
-                                        <span class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-100 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                                {{ $page.props.auth.user.current_team.name }}
-
-                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </template>
-
-                                    <template #content>
-                                        <div class="w-60">
-                                            <!-- Team Management -->
-                                            <template v-if="$page.props.jetstream.hasTeamFeatures">
-                                                <div class="block px-4 py-2 text-xs text-gray-100">
-                                                    Manage Team
-                                                </div>
-
-                                                <!-- Team Settings -->
-                                                <DropdownLink :href="route('teams.show', $page.props.auth.user.current_team)">
-                                                    Team Settings
-                                                </DropdownLink>
-
-                                                <DropdownLink v-if="$page.props.jetstream.canCreateTeams" :href="route('teams.create')">
-                                                    Create New Team
-                                                </DropdownLink>
-
-                                                <!-- Team Switcher -->
-                                                <template v-if="$page.props.auth.user.all_teams.length > 1">
-                                                    <div class="border-t border-gray-200" />
-
-                                                    <div class="block px-4 py-2 text-xs text-gray-100">
-                                                        Switch Teams
-                                                    </div>
-
-                                                    <template v-for="team in $page.props.auth.user.all_teams" :key="team.id">
-                                                        <form @submit.prevent="switchToTeam(team)">
-                                                            <DropdownLink as="button">
-                                                                <div class="flex items-center">
-                                                                    <svg v-if="team.id == $page.props.auth.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                                    </svg>
-
-                                                                    <div>{{ team.name }}</div>
-                                                                </div>
-                                                            </DropdownLink>
-                                                        </form>
-                                                    </template>
-                                                </template>
-                                            </template>
-                                        </div>
-                                    </template>
-                                </Dropdown>
-                            </div>
 
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
@@ -314,7 +82,7 @@ const menuRoutes = ref([
                                     <template #content>
                                         <!-- Account Management -->
                                         <div class="block px-4 py-2 text-xs text-slate-100">
-                                            Manage Account
+                                            Manejo de cuenta
                                         </div>
 
                                         <DropdownLink :href="route('profile.show')">
@@ -369,7 +137,7 @@ const menuRoutes = ref([
 
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
 
-                    <ResponsiveNavBar :routes="menuRoutes" @toggleResponsiveNavBar="showingNavigationDropdown = ! showingNavigationDropdown"></ResponsiveNavBar>
+                    <ResponsiveNavBar :routes="getRoutes()" @toggleResponsiveNavBar="showingNavigationDropdown = ! showingNavigationDropdown"></ResponsiveNavBar>
 
                 </div>
             </nav>
@@ -388,7 +156,7 @@ const menuRoutes = ref([
 
                     <!-- SideNav Bar -->
 
-                    <SideNavBar :routes="menuRoutes"></SideNavBar>
+                    <SideNavBar :routes="getRoutes()"></SideNavBar>
                     <!-- Content -->
                     <div class="lg:pl-[12.5rem]">
                         <div class="max-w-3xl mx-auto pt-10 xl:max-w-none">
