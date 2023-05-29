@@ -7,6 +7,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import SideNavBar from '../Components/SideNavBar/SideNavBar.vue';
 
 defineProps({
     title: String,
@@ -25,7 +26,132 @@ const switchToTeam = (team) => {
 const logout = () => {
     router.post(route('logout'));
 };
+
+const menuRoutes = ref([
+    {
+        type: 'menu',
+        title: 'Dashboard',
+        items: [
+            {
+                title: 'Pedidos',
+                href: 'dashboard',
+                active_state: 'dashboard'
+            },
+            {
+                title: 'Estadisticas',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+        ]
+    },
+    {
+        type: 'menu',
+        title: 'Configuración',
+        items: [
+            {
+                title: 'Cadetes',
+                href: 'cadetes',
+                active_state: 'cadetes'
+            },
+            {
+                title: 'Motos',
+                href: 'motos',
+                active_state: 'motos'
+            },
+            {
+                title: 'Permisos',
+                href: 'permisos',
+                active_state: 'permisos'
+            }
+        ],
+    },
+    {
+        type: 'menu',
+        title: 'Pedidos',
+        items: [
+            {
+                title: 'Pendientes',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+            {
+                title: 'Terminados',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+            {
+                title: 'Cancelados',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+        ]
+    },
+    {
+        type: 'menu',
+        title: 'Pedidos',
+        items: [
+            {
+                title: 'Pendientes',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+            {
+                title: 'Terminados',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+            {
+                title: 'Cancelados',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+        ]
+    },
+    {
+        type: 'menu',
+        title: 'Pedidos',
+        items: [
+            {
+                title: 'Pendientes',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+            {
+                title: 'Terminados',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+            {
+                title: 'Cancelados',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+        ]
+    },
+    {
+        type: 'menu',
+        title: 'Pedidos',
+        items: [
+            {
+                title: 'Pendientes',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+            {
+                title: 'Terminados',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+            {
+                title: 'Cancelados',
+                href: 'pedidos',
+                active_state: 'pedidos'
+            },
+        ]
+    },
+])
 </script>
+
 
 <template>
     <div>
@@ -34,7 +160,7 @@ const logout = () => {
         <Banner />
 
         <div class="min-h-screen bg-slate-900 text-gray-100">
-            <nav class="border-b border-slate-700">
+            <nav class="border-b top-0 sticky bg-slate-900 border-slate-700">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -48,9 +174,9 @@ const logout = () => {
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                <!-- <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
-                                </NavLink>
+                                </NavLink> -->
                             </div>
                         </div>
 
@@ -276,33 +402,28 @@ const logout = () => {
             </nav>
 
             <!-- Page Heading -->
-            <header v-if="$slots.header" class="outline outline-1 outline-slate-700">
+            <!-- <header v-if="$slots.header" class="outline outline-1 outline-slate-700">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
-            </header>
+            </header> -->
 
             <!-- Page Content -->
             <main>
-                <div class="columns-2 flex">
-                    <div class="max-w-8xl mx-auto px-4 sm:px-6 md:px-8 bg-slate-900">
-						<div class="hidden lg:block z-20 inset-0 relative top-0 left-[max(0px,calc(50%-45rem))] right-auto w-[19.5rem] pb-10 px-8 overflow-y-auto">
-							<nav id="nav" class="lg:text-sm lg:leading-6 relative">
-								<li class="mt-12 lg:mt-8 list-none">
-									<h5 class="mb-8 lg:mb-3 font-semibold text-slate-100 dark:text-slate-200">Getting Started</h5>
-									<ul class="space-y-6 lg:space-y-2 border-l border-slate-700 dark:border-slate-700">
-										<li>
-											<a class="block border-l pl-4 -ml-px border-transparent hover:border-slate-400 dark:hover:border-slate-500 text-slate-100 hover:text-slate-100 dark:text-slate-400 dark:hover:text-slate-300" href="/docs/installation">Installation</a>
-										</li>
-									</ul>
-								</li>
-							</nav>
-						</div>
-						<div class="lg:pl-[19.5rem]">
-							<slot />
-						</div>
-					</div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 bg-slate-900">
+
+                    <!-- SideNav Bar -->
+
+                    <SideNavBar :routes="menuRoutes"></SideNavBar>
+                    <!-- Content -->
+                    <div class="lg:pl-[12.5rem]">
+                        <div class="max-w-3xl mx-auto pt-10 xl:max-w-none">
+                            <slot />
+                        </div>
+                    </div>
                 </div>
+
             </main>
         </div>
     </div>
