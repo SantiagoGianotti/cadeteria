@@ -51,10 +51,11 @@ const logout = () => {
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
-                                </NavLink>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex items-center border-b-2 border-cyan-500">
+                                    <slot name="header">
+
+
+                                    </slot>
                             </div>
                         </div>
 
