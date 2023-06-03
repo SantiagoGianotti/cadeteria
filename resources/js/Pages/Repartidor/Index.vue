@@ -32,7 +32,7 @@ const search_columns =  [
         <div class="py-12 ">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
                 <div class=" overflow-hidden shadow-xl sm:rounded-lg ">
-                    <div class="m-6 lg:m-8 bg-slate-800 border-slate-300">
+                    <div class="m-6 lg:m-8 bg-slate-800 rounded-lg">
 
                         <ListMenu :items="repartidores"
                             :search="true"
