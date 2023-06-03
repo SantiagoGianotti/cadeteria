@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreRepartidorRequest;
 use App\Http\Requests\UpdateRepartidorRequest;
 use App\Models\Repartidor;
+use Inertia\Inertia;
 
-class Repartidores extends Controller
+class RepartidoresController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $repartidores = Repartidor::all();
+
+        return Inertia::render('Repartidor/Index', [
+            'repartidores' => $repartidores
+        ]);
     }
 
     /**
