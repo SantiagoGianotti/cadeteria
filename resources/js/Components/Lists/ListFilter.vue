@@ -20,7 +20,10 @@ const reloadPage = () => {
 
     let url = route(route().current(), form)
 
-    router.replace(url)
+    router.get(url, {}, {
+        preserveState: true,
+        preserveScroll:true
+    })
 }
 
 watch(form, debounce((val) => reloadPage(), 500))

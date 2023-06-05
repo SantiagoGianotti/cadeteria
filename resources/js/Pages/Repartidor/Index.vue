@@ -34,7 +34,7 @@ const search_columns =  [
                 <div class=" overflow-hidden shadow-xl sm:rounded-lg ">
                     <div class="bg-slate-800 rounded-lg">
 
-                        <ListMenu :items="repartidores.data"
+                        <ListMenu :paginated="repartidores"
                             :search="true"
                             :search_columns="search_columns"
                             v-slot="{item}">

@@ -20,6 +20,7 @@ class RepartidoresController extends Controller
             {
                 $query->where($request->campo, 'like', "%".$request->busqueda."%");
             })->paginate(15)
+            ->withQueryString()
         ]);
     }
 
