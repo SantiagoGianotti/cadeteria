@@ -19,11 +19,11 @@ export function getRoutes() {
             title: 'Configuración',
             items: [
                 {
-                    title: 'Cadetes',
-                    href: '',
+                    title: 'Repartidores',
+                    href: route('repartidores.index'),
                     active_state: {
                         compare: "url",
-                        with: "dashboard"
+                        with: '/repartidores'
                     }
                 },
                 {
