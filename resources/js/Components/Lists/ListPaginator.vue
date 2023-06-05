@@ -21,7 +21,8 @@
             <li v-for="link in paginated.links">
                 <Link
                     preserve-state
-                    :href="link.url"
+                    preserve-scroll
+                    :href="link.url??'#'"
                     :active="link.active"
                     :class="activeClasses(link.active)">
                     {{ link.label }}
