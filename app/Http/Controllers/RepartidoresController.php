@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreRepartidorRequest;
 use App\Http\Requests\UpdateRepartidorRequest;
 use App\Models\Repartidor;
@@ -12,12 +13,13 @@ class RepartidoresController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $repartidores = Repartidor::all();
-
         return Inertia::render('Repartidor/Index', [
-            'repartidores' => $repartidores
+            'repartidores' => Repartidor::when($request->has(['campo', 'busqueda']), function ($query) use ($request)
+            {
+                $query->where($request->campo, 'like', "%".$request->busqueda."%");
+            })->paginate(15)
         ]);
     }
 
