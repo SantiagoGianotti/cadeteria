@@ -24,7 +24,6 @@ it('user can see repartidores', function()
         ->get(route('repartidores.index'))
         ->assertInertia(fn (Assert $page) => $page
             ->component('Repartidor/Index')
-            ->has('repartidores', 5)
-
-    );
+            ->has('repartidores.data', 5)
+        );
 });
